@@ -79,3 +79,19 @@ int main(){
 
     return 0;
 }
+//graph diagram
+//preorder dry run
+// 1 -> 12 -> 5 -> 6 -> 9 ->
+//inorder dry run
+// 5 -> 12 -> 6 -> 1 -> 9 ->
+//postorder dry run
+// 5 -> 6 -> 12 -> 9 -> 1 ->
+//graph diagram
+/*  
+        1
+       / \
+      12  9
+     / \
+    5   6
+*/
+
