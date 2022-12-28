@@ -39,7 +39,7 @@ void inorderTraversal(struct node* root){
 
 // Preorder Traversal of the tree
 void preorderTraversal(struct node* root){
-    if(root=NULL){
+    if(root==NULL){
         return;
     }
     printf("%d ->", root->item);
@@ -60,23 +60,21 @@ void postorderTraversal(struct node* root){
 
 
 int main(){
-    struct node* root;
-    root = createNode(1);
-    insertLeft(root, 12);
-    insertRight(root, 9);
-    
-    insertLeft(root->left, 5);
-    insertRight(root->left, 6);
+    struct node* root = createNode(1);
+  insertLeft(root, 12);
+  insertRight(root, 9);
 
-    
-    printf("inorder traversal \n");
-    inorderTraversal(root);
-    
-    printf("\npreorder traversal \n");
-    preorderTraversal(root);
+  insertLeft(root->left, 5);
+  insertRight(root->left, 6);
 
-    printf("\npostorder traversal \n");
-    postorderTraversal(root);
+  printf("Inorder traversal \n");
+  inorderTraversal(root);
+
+  printf("\nPreorder traversal \n");
+  preorderTraversal(root);
+
+  printf("\nPostorder traversal \n");
+  postorderTraversal(root);
 
 
     return 0;
