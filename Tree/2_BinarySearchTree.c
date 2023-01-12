@@ -78,9 +78,11 @@ struct node *deleteNode(struct node *root, int key){
 
     //Place the inorder successor in the posititon of the node to be deleted 
     root->key = temp->key;
-
+    
     //Delete the inorder successor
+    
     root->right = deleteNode(root->right, temp->key);
+    
     }
     return root;
 }
@@ -99,8 +101,8 @@ int main(){
     printf("Inorder traversal: ");
     inorder(root);
 
-    printf("\nAfter deleting 10\n");
-    root = deleteNode(root, 10);
+    printf("\nAfter deleting 3\n");
+    root = deleteNode(root, 3);
     printf("inorder travseral: "); 
     inorder(root);
 

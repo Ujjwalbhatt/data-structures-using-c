@@ -1,71 +1,86 @@
-#include<stdio.h>
-#include<stdlib.h>
-
-void quick(int A[], int N,  int Beg, int End , int *LocPtr){
-        int Left, Right,temp;
-        Left = Beg;
-        Right= End;
-        *LocPtr=Beg;
-        step2:
-        while (A[*LocPtr]<=A[Right]&&*LocPtr!=Right)
-        {
-            Right--;
-        }
-        if(*LocPtr==Right)
-        return;
-        if(A[*LocPtr]>A[Right]){
-            temp=A[*LocPtr];
-            A[*LocPtr] = A[Right];
-            A[Right] = temp;
-            *LocPtr = Right;
-        }
-        goto step3;
-        step3:
-        while(A[Left]<=A[*LocPtr]&&Left!=*LocPtr)
-        Left++;
-            if(*LocPtr==Left)
-            return;
-            if(A[Left]>A[*LocPtr]){
-                temp=A[Left];
-                A[Left] = A[*LocPtr];
-                A[*LocPtr]=temp;
-                *LocPtr=Left;
-            }
-            goto step2;
+// Quick sort in C
+#include <stdio.h>
+void printArray(int array[], int size);
+// function to swap elements
+void swap(int *a, int *b) {
+  int t = *a;
+  *a = *b;
+  *b = t;
 }
-void quick_Sort(int A[], int N){
-    int Beg,End,Loc,Top=-1;
 
-    int Lower[10] ,Upper[10];
-    if(N>1)
-    {
-        Top++;
-        Lower[Top] = 0;
-        Upper[Top] = N-1;
+// function to find the partition position
+int partition(int array[], int low, int high) {
+  
+  // select the rightmost element as pivot
+  int pivot = array[high];
+  
+  // pointer for greater element
+  int i = (low - 1);
+
+  // traverse each element of the array
+  // compare them with the pivot
+  for (int j = low; j < high; j++) {
+    if (array[j] <= pivot) {
+        
+      // if element smaller than pivot is found
+      // swap it with the greater element pointed by i
+      i++;
+      
+      // swap element at i with element at j
+      swap(&array[i], &array[j]);
     }
-    while(Top!=-1){
-        Beg = Lower[Top];
-        End = Upper[Top];
-        Top--;
-        quick(A,N,Beg,End,&Loc);
-        if(Beg<Loc-1){
-            Top++;
-            Lower[Top]=Beg;
-            Upper[Top] = Loc-1;   
-        }
-        if(Loc+1<End){
-            Top--;
-            Lower[Top] = Loc+1;
-            Upper[Top] = End;
-        }
-    }
+    printArray(array,7);
+
+  }
+
+  // swap the pivot element with the greater element at i
+  swap(&array[i + 1], &array[high]);
+  
+  // return the partition point
+  return (i + 1);
 }
-int main(){
 
-    int A[]= {13,45,6,43,211,98,65};
-    quick_Sort(A,7);
-    for(int i = 0 ; i<7;i++){
-        printf("%d, ", A[i]);
-    }
-    return 0;
+void quickSort(int array[], int low, int high) {
+  if (low < high) {
+    printf("low= %d high= %d\n", low,high);
+    // find the pivot element such that
+    // elements smaller than pivot are on left of pivot
+    // elements greater than pivot are on right of pivot
+    int pi = partition(array, low, high);
+    printArray(array,7);
+     printf("low= %d high= %d pi=%d\n", low,high,pi);
+
+    // recursive call on the left of pivot
+    quickSort(array, low, pi - 1);
+    printf("low= %d high= %d\n", low,high);
+
+    // recursive call on the right of pivot
+    quickSort(array, pi + 1, high);
+    printf("low= %d high= %d\n", low,high);
+
+  }
+}
+
+// function to print array elements
+void printArray(int array[], int size) {
+  for (int i = 0; i < size; ++i) {
+    printf("%d  ", array[i]);
+  }
+  printf("\n");
+}
+
+// main function
+int main() {
+  int data[] = {8, 7, 2, 1, 0, 9, 6};
+  
+  int n = sizeof(data) / sizeof(data[0]);
+  
+  printf("Unsorted Array\n");
+  printArray(data, n);
+  
+  // perform quicksort on data
+  quickSort(data, 0, n - 1);
+  
+  printf("Sorted array in ascending order: \n");
+  printArray(data, n);
 }
