@@ -42,7 +42,6 @@ int partition(int array[], int low, int high) {
 
 void quickSort(int array[], int low, int high) {
   if (low < high) {
-    printf("low= %d high= %d\n", low,high);
     // find the pivot element such that
     // elements smaller than pivot are on left of pivot
     // elements greater than pivot are on right of pivot
