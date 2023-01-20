@@ -31,14 +31,14 @@ struct Graph* createAGraph(int vertices) { // vertices is the number of vertices
 
   int i;
   for (i = 0; i < vertices; i++) // initialize adjacency lists to NULL
-    graph->adjLists[i] = NULL; // set all the head pointers to NULL
+  graph->adjLists[i] = NULL; // set all the head pointers to NULL
 
   return graph; // return the graph
 }
 
 // Add edge
 void addEdge(struct Graph* graph, int s, int d) { // s is the source vertex and d is the destination vertex
-  // Add edge from s to d
+  // Add edge from s to d   
   struct node* newNode = createNode(d); // create a new node for destination vertex
   newNode->next = graph->adjLists[s]; // point the new node to the current head
   graph->adjLists[s] = newNode;  // point the head to the new node

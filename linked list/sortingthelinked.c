@@ -28,13 +28,26 @@ void print(struct node* head){
         printf("%d ", head->value);
         head= head->next;
     }
+    printf("\n");
     
 }
 void sortlinked(struct node * head){
-    struct node * p= head;
-    struct node *q;
-    while(p!=NULL){
-        q = p->next;
+    struct node *current= head;
+    struct node *index = NULL;
+    int temp;
+    while(current!=NULL){
+        index = current->next;
+        while (index!=NULL)
+        {
+
+            temp =current->value;
+            if(current->value > index->value){
+            current->value = index->value;
+            index->value = temp;
+            }
+            index = index->next;
+        }
+        current= current->next;
     }
 }
 
@@ -44,6 +57,8 @@ int main(){
     head=insert(head,22);
     head=insert(head,132);
     head=insert(head,123);
+    print(head);
+    sortlinked(head);
     print(head);
     return 0;
 }

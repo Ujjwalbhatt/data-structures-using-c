@@ -22,28 +22,8 @@ struct node* insert(struct node* head,int value){
 
       return head;
 }
-void print(struct node* head){
-    while (head!=NULL)
-    {
-        printf("%d ", head->value);
-        head= head->next;
-    }
-    
-}
-void sortlinked(struct node * head){
-    struct node * p= head;
-    struct node *q;
-    while(p!=NULL){
-        q = p->next;
-    }
-}
-
 int main(){
-    struct node *head = NULL;
-    head=insert(head,12);
-    head=insert(head,22);
-    head=insert(head,132);
-    head=insert(head,123);
-    print(head);
+
+
     return 0;
 }

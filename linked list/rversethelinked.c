@@ -18,14 +18,29 @@ struct node* node(struct node *head,int value){
         head = temp;
         return head;
 }
+
 void print(struct node* head){
     struct node* p =head;
     while(p!=NULL){
         printf("%d ", p->data);
         p=p->next;
     }
+    printf("\n");
 }
-
+struct node* reverse(struct node* head){
+    struct node *prevnode, *currentnode, *nextnode;
+    prevnode = NULL;
+    currentnode = nextnode = head;
+    while (nextnode!=NULL)
+    {   
+        nextnode = nextnode->next;
+        currentnode->next = prevnode;
+        prevnode = currentnode;
+        currentnode = nextnode;
+    }
+     head = prevnode;
+        return head;
+}
 int main(){
     int n=0;
     int value;
@@ -36,9 +51,10 @@ int main(){
     ptr1 = node(ptr1,24);
     ptr1 = node(ptr1,25);
     ptr1 = node(ptr1,54);
- 
-    
     print(ptr2);
+    ptr2 = reverse(ptr2);
+    print(ptr2);
+    
 
     return 0;
 }

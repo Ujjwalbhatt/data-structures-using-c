@@ -19,7 +19,7 @@ void insert(struct Node** head, int data){
     // If the linked list already had atleast 1 node
     if(*head !=NULL)
         (*head)->prev = freshNode;
-
+    
     // freshNode will become head
     *head = freshNode;
 }

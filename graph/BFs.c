@@ -27,7 +27,7 @@ void enqueue(struct queue*q , int val){
     }
     else{
         q->r++;
-        q->arr[q->r] == val;
+        q->arr[q->r] = val;
     }
 }
 
